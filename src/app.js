@@ -1,3 +1,5 @@
+// connecting express code 
+
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors"
@@ -8,7 +10,7 @@ app.use(cors({
     Credentials: true
 }))
 
-// 3 major configurations
+// 3 major middleware configurations
 
 app.use(express.json({ limits: "16kb" })) // express.json is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser. 
 
