@@ -12,14 +12,20 @@ app.use(cors({
 
 // 3 major middleware configurations
 
-app.use(express.json({ limits: "16kb" })) // express.json is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser. 
+// app.use(express.json({ limits: "16kb" })) // express.json is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser. 
 
 //  taking url is a bit tricky task beacause url is itself encodes for some special characters toh hume express ko batana padega ki aise log bhi aenge toh samajhna 
-app.use(express.urlencoded({ extended: true, limit: "16kb" }))
+// app.use(express.urlencoded({ extended: true, limit: "16kb" }))
 
 // ek aur configuration kari hai jo koi bhi agar file folder pdfs and all store karna hoto
-app.use(express.static("public"))
+// app.use(express.static("public"))
 
+// app.use(cookieParser())
+
+
+app.use(express.json({limit: "16kb"}))
+app.use(express.urlencoded({extended: true, limit: "16kb"}))
+app.use(express.static("public"))
 app.use(cookieParser())
 
 
