@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 // password encryption authentication packages
 import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken"
 
 const userSchema = new Schema(
     {
@@ -55,7 +55,7 @@ const userSchema = new Schema(
 )
 
 // password encryption process
-//  we use pre hook ofmongoose to perform any action just before giving a request of data by user 
+//  we use pre hook of mongoose to perform any action just before giving a request of data by user 
 
 userSchema.pre("save", async function (next) {  // async because this converting process may take time and thats why for safety
     if (!this.isModified("password")) return next()
@@ -65,9 +65,8 @@ userSchema.pre("save", async function (next) {  // async because this converting
 })
 
 // password decryption and comparing process
-userSchema.methods.isPasswordCorrect = async function (password) { // password----->cryptographiv password
+userSchema.methods.isPasswordCorrect = async function (password) { // password----->cryptographic password
     return await bcrypt.compare(password, this.password) //  written type of compare is boolean
-
 }
 
 //  use of jwt and creating refresh and access tokens
@@ -85,7 +84,6 @@ userSchema.methods.generateAccessToken = function(){
         }
     )
 }
-
 userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
@@ -101,3 +99,4 @@ userSchema.methods.generateRefreshToken = function(){
 
 
 export const User = mongoose.model("User", userSchema)
+
