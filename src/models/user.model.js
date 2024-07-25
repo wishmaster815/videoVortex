@@ -66,7 +66,7 @@ userSchema.pre("save", async function (next) {  // async because this converting
 
 // password decryption and comparing process
 userSchema.methods.isPasswordCorrect = async function (password) { // password----->cryptographic password
-    return await bcrypt.compare(password, this.password) //  written type of compare is boolean
+    return await bcrypt.compare(password, this.password) //  written type of compare is boolean 
 }
 
 //  use of jwt and creating refresh and access tokens
