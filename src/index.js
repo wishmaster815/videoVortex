@@ -28,10 +28,12 @@ connectDB()
 
 /*
 // this is one of the way to setup connection withh database but this makes it a bit messy 
+
 import mongoose from "mongoose";
 import { DB_NAME } from "./constants";
 import express from "express";
 const app = express();
+
 // IIFEs IN JAVASCRIPT
 ; (async () => {
     try {

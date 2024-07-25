@@ -1,3 +1,4 @@
+// database connection index js mein hoga and app js express mein use karenge
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
 

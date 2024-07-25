@@ -70,8 +70,8 @@ userSchema.methods.isPasswordCorrect = async function (password) { // password--
 }
 
 //  use of jwt and creating refresh and access tokens
-userSchema.methods.generateAccessToken = function(){
-    return  jwt.sign(
+userSchema.methods.generateAccessToken = function () {
+    return jwt.sign(
         {
             _id: this._id,
             email: this.email,
@@ -84,11 +84,11 @@ userSchema.methods.generateAccessToken = function(){
         }
     )
 }
-userSchema.methods.generateRefreshToken = function(){
+userSchema.methods.generateRefreshToken = function () {
     return jwt.sign(
         {
             _id: this._id,
-            
+
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
@@ -99,4 +99,6 @@ userSchema.methods.generateRefreshToken = function(){
 
 
 export const User = mongoose.model("User", userSchema)
+// export const User = mongoose.model("kya naam rakhna hai ", kaha se uthana hai) 
+
 

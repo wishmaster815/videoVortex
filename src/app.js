@@ -11,6 +11,7 @@ app.use(cors({
 }))
 
 // 3 major middleware configurations
+// app.use() -- > for using middlewares syntax
 
 // app.use(express.json({ limits: "16kb" })) // express.json is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser. 
 
@@ -33,7 +34,7 @@ app.use(cookieParser())
 // routes import 
 import userRouter from "./routes/user.routes.js";
 // here now we dont use app.get() and all...
-// since we know have seperate folders for easy access we will use a middleware that will take ccontrol to that url(route)
+// since we now have seperate folders for easy access we will use a middleware that will take control to that url(route)
 app.use("/api/v1/users", userRouter) 
 // which route will be used???  /api/v1/users or /register???
 // here the request first goes to /api/v1/users and then the controll is given to userController as it is passed as middleware then /register will followup
