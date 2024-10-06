@@ -324,28 +324,28 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     ).select("-password")
 
     return res
-    .status(200)
-    .json(new ApiResponse(200,user,"Avatar updated sucessfully!"))
+        .status(200)
+        .json(new ApiResponse(200, user, "Avatar updated sucessfully!"))
 
 
 })
 
 const updateCoverImage = asyncHandler(async (req, res) => {
     const coverLocalPath = req.file?.path
-    if(!coverLocalPath){
+    if (!coverLocalPath) {
         throw new ApiError(400, "Cover image is neccesry!")
     }
-    
+
     const coverImage = await uploadOnCloudinary(coverLocalPath)
-    
-    if(!coverImage.url){
-        throw new ApiError(400,"Error while uploading on avatar!")
+
+    if (!coverImage.url) {
+        throw new ApiError(400, "Error while uploading on avatar!")
     }
 
-    const user = await  User.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
         req.user?._id,
         {
-            $set:{
+            $set: {
                 coverImage: coverImage.url
             }
         },
@@ -355,8 +355,8 @@ const updateCoverImage = asyncHandler(async (req, res) => {
     )
 
     return res
-    .status(200)
-    .json(new ApiResponse(200,user,"Cover image updated sucessfully!"))
+        .status(200)
+        .json(new ApiResponse(200, user, "Cover image updated sucessfully!"))
 })
 
 export {
@@ -366,8 +366,8 @@ export {
     refreshtokenAccess,
     changeCurrentPassword,
     currentUser,
-    updateAccountDetails, 
+    updateAccountDetails,
     updateUserAvatar,
     updateCoverImage,
-    
+
 }
